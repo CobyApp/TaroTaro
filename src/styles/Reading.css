@@ -1,0 +1,415 @@
+/* Reading 페이지 */
+.reading {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+}
+
+.reading-main {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px var(--spacing-md) var(--spacing-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.reading-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.1em;
+}
+
+/* 공통 섹션 */
+.phase-section {
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md);
+}
+
+.phase-desc {
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.phase-desc strong {
+  color: var(--color-accent-gold);
+}
+
+/* 질문 입력 */
+.question-input {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: var(--spacing-md);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  resize: none;
+  margin-bottom: var(--spacing-lg);
+  transition: border-color 0.3s;
+}
+
+.question-input:focus {
+  outline: none;
+  border-color: var(--color-accent-purple);
+}
+
+.question-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* 셔플 */
+.shuffle-section {
+  justify-content: center;
+}
+
+.shuffle-deck {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.shuffle-card {
+  position: absolute;
+  width: 80px;
+  height: 120px;
+  background: linear-gradient(145deg, #1a1a4a, #0a0a2a);
+  border: 2px solid var(--color-accent-gold);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.shuffle-card::after {
+  content: '✦';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-accent-gold);
+}
+
+.shuffle-text {
+  font-size: 1.1rem;
+  color: var(--color-accent-purple-light);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* 카드 선택 */
+.selecting-section {
+  gap: var(--spacing-lg);
+  max-width: 100%;
+}
+
+.progress-area {
+  text-align: center;
+}
+
+.progress-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.progress-bar {
+  width: 120px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-gold);
+  border-radius: 3px;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent-gold);
+}
+
+/* 선택된 카드 미리보기 */
+.selected-preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+.preview-slot {
+  width: clamp(45px, 8vw, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.preview-slot img,
+.preview-slot .slot-number {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.preview-slot img {
+  border: 2px solid var(--color-accent-gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.preview-slot img.reversed {
+  transform: rotate(180deg);
+}
+
+.preview-slot .slot-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: var(--color-text-muted);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 600;
+}
+
+.slot-label {
+  font-size: clamp(0.55rem, 1.5vw, 0.7rem);
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.preview-slot.filled .slot-label {
+  color: var(--color-accent-purple-light);
+}
+
+/* 카드 덱 */
+.deck-area {
+  width: 100%;
+  overflow-x: auto;
+  padding: var(--spacing-md) 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-deck {
+  display: flex;
+  justify-content: center;
+  gap: clamp(6px, 1.5vw, 10px);
+  padding: var(--spacing-sm);
+  min-width: min-content;
+}
+
+.deck-card {
+  flex-shrink: 0;
+  width: clamp(55px, 10vw, 75px);
+  aspect-ratio: 2/3;
+  background: linear-gradient(145deg, #1a1a4a, #0a0a2a);
+  border: 2px solid var(--color-accent-gold);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.deck-card:hover {
+  border-color: var(--color-accent-purple);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.deck-card-symbol {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--color-accent-gold);
+}
+
+/* 카드 공개 */
+.revealing-section {
+  gap: var(--spacing-lg);
+}
+
+.standard-reveal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+.reveal-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.reveal-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--color-accent-purple-light);
+  letter-spacing: 0.05em;
+}
+
+/* 켈틱크로스 레이아웃 */
+.celtic-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-md);
+}
+
+.celtic-cross {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.celtic-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.celtic-pos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.celtic-label {
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  color: var(--color-accent-purple-light);
+  white-space: nowrap;
+}
+
+.celtic-center {
+  position: relative;
+  width: 100px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.celtic-main-card,
+.celtic-cross-card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.celtic-main-card {
+  z-index: 1;
+}
+
+.celtic-cross-card {
+  z-index: 2;
+}
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+/* 스태프 */
+.celtic-staff {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.staff-pos {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.staff-label {
+  font-size: 0.75rem;
+  color: var(--color-accent-purple-light);
+  min-width: 70px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .reading-main {
+    padding-top: 50px;
+  }
+  
+  .celtic-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .celtic-staff {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .staff-pos {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .staff-label {
+    min-width: auto;
+    text-align: center;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .selected-preview {
+    padding: var(--spacing-sm);
+  }
+  
+  .preview-slot {
+    width: 40px;
+  }
+  
+  .slot-label {
+    font-size: 0.5rem;
+  }
+  
+  .celtic-center {
+    width: 80px;
+    height: 130px;
+  }
+}
