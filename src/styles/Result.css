@@ -82,6 +82,183 @@
   transform: scale(1.05);
 }
 
+/* AI 해석 섹션 */
+.ai-section {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 16px;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.ai-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.ai-header h2 {
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.ai-button {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.ai-button:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+}
+
+.ai-notice {
+  text-align: center;
+  padding: var(--spacing-md);
+  background: rgba(255, 152, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.ai-notice p {
+  color: #ffb74d;
+  margin-bottom: var(--spacing-sm);
+}
+
+.settings-link {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffb74d;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.settings-link:hover {
+  background: rgba(255, 152, 0, 0.3);
+}
+
+/* AI 로딩 */
+.ai-loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(139, 92, 246, 0.2);
+  border-top-color: #8b5cf6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto var(--spacing-md);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.ai-loading p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.loading-sub {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* AI 에러 */
+.ai-error {
+  text-align: center;
+  padding: var(--spacing-md);
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ai-error p {
+  color: #f87171;
+  margin-bottom: var(--spacing-md);
+}
+
+.retry-button {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* AI 콘텐츠 */
+.ai-content {
+  background: rgba(20, 10, 40, 0.5);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  line-height: 1.9;
+}
+
+.ai-content .ai-h2 {
+  font-size: 1.3rem;
+  color: var(--color-accent-gold);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.ai-content .ai-h3 {
+  font-size: 1.1rem;
+  color: var(--color-accent-purple-light);
+  margin: var(--spacing-md) 0 var(--spacing-sm);
+}
+
+.ai-content .ai-h4 {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  margin: var(--spacing-md) 0 var(--spacing-sm);
+}
+
+.ai-content .ai-p {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.ai-content strong {
+  color: var(--color-accent-gold);
+}
+
+/* 기본 해석 섹션 */
+.basic-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
 /* 해석 카드 */
 .interpretations {
   display: flex;
